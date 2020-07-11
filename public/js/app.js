@@ -2,6 +2,8 @@ const weatherMsg = document.querySelectorAll('section p')
 let weatherMsg1 = weatherMsg[0]
 let weatherMsg2 = weatherMsg[1]
 
+console.log(3)
+
 
 const fetchData = (location)=>{
 
