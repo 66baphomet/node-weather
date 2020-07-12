@@ -107,5 +107,5 @@ app.get('*', (req, res)=>{
 })
 
 app.listen(port, ()=>{
-    console.log('server is upto port 3000')
+    console.log('server is upto port ' + port)
 })
