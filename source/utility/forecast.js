@@ -14,7 +14,6 @@ const forecast = (lattitude, longitude, callBack)=>{
         }
         else{
             const {current} = body
-            console.log(current)
             callBack(undefined, {
                 timezone: body.timezone,
                 weather: current.weather[0].main,
