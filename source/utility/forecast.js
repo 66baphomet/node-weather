@@ -4,6 +4,7 @@ const forecast = (lattitude, longitude, callBack)=>{
 
     request({url, json: true}, (error, {body})=>{
 
+       
 
         if(error){
             callBack('Unable to connect to location services!', undefined)
@@ -13,13 +14,14 @@ const forecast = (lattitude, longitude, callBack)=>{
         }
         else{
             const {current} = body
+            console.log(current)
             callBack(undefined, {
                 timezone: body.timezone,
                 weather: current.weather[0].main,
                 description: current.weather[0].description,
                 temperature: current.temp,
                 feelslike: current.feels_like,
-                uvi: current.uvi
+                humidity: current.humidity,
             })
         }
 

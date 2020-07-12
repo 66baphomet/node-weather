@@ -34,7 +34,7 @@ const showData = (data)=>{
 
     if(!data.error){
         weatherMsg1.innerText = data.location
-        weatherMsg2.innerHTML = 'Weather Conditon: ' + data.weather + '<br/>Temperature: ' + data.temperature + '<br/>Feels Like: ' + data.feelslike + '<br/>UV Index: ' + data.uvi
+        weatherMsg2.innerHTML = 'Weather Conditon: ' + data.weather + '<br/>Temperature: ' + data.temperature + '<br/>Feels Like: ' + data.feelslike + '<br/>Humidity: ' + data.humidity +'%'
     }else{
         weatherMsg1.innerText = data.error
         weatherMsg2.innerText =''
