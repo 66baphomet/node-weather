@@ -8,7 +8,6 @@ const fetchData = (location)=>{
 
     fetch('/weather?address=' + location).then((response) => {
         response.json().then(( data )=>{
-            // console.log(data)
             showData(data)
         })
     })
@@ -35,7 +34,7 @@ const showData = (data)=>{
 
     if(!data.error){
         weatherMsg1.innerText = data.location
-        weatherMsg2.innerHTML = 'Weather Conditon: ' + data.weather + '<br/>Temperature: ' + data.temperature + '<br/>Feels Like: ' + data.feelslike
+        weatherMsg2.innerHTML = 'Weather Conditon: ' + data.weather + '<br/>Temperature: ' + data.temperature + '<br/>Feels Like: ' + data.feelslike + '<br/>UV Index: ' + data.uvi
     }else{
         weatherMsg1.innerText = data.error
         weatherMsg2.innerText =''

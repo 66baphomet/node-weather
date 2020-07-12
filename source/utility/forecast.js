@@ -19,7 +19,7 @@ const forecast = (lattitude, longitude, callBack)=>{
                 description: current.weather[0].description,
                 temperature: current.temp,
                 feelslike: current.feels_like,
-                UVI: current.uvi
+                uvi: current.uvi
             })
         }
 
