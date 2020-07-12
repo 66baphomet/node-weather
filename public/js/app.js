@@ -3,9 +3,10 @@ let weatherMsg1 = weatherMsg[0]
 let weatherMsg2 = weatherMsg[1]
 
 
+
 const fetchData = (location)=>{
 
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then(( data )=>{
             // console.log(data)
             showData(data)
