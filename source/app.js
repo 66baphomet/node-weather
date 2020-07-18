@@ -2,6 +2,9 @@
 const path = require('path')//built in node module
 const express = require('express')
 const hbs = require('hbs')
+const unirest = require('unirest')
+const requestIp = require('request-ip')
+let ip;
 //customized js
 const geocode = require('./utility/geocode.js')
 const forecast = require('./utility/forecast')
@@ -22,6 +25,13 @@ hbs.registerPartials(partialsPath)
 
 //set up static directory to serve
 app.use(express.static(publicDirectory))
+//set up ip request
+app.use(requestIp.mw())
+ 
+app.use(function(req, res) {
+    ip = req.clientIp;
+    res.end(ip);
+});
 
 app.get('', (req, res)=>{
     res.render('index', {
@@ -29,6 +39,26 @@ app.get('', (req, res)=>{
         name: 'Dipto'
     })
 })
+
+app.get('/location', (req, res)=>{
+
+    
+    var apiCall = unirest("GET",
+    "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/" + ip
+  );
+  apiCall.headers({
+    "x-rapidapi-host": "ip-geolocation-ipwhois-io.p.rapidapi.com",
+	"x-rapidapi-key": "eec0b3c358msh59bc2af18495d1fp104c66jsn10aa698cd664",
+	"useQueryString": true
+  });
+  apiCall.end(function(result) {
+    if (res.error) throw new Error(result.error);
+    console.log(result.body);
+    res.send(result.body);
+  });
+})
+
+
 
 app.get('/about', (req, res)=>{
     res.render('about', {
