@@ -26,12 +26,12 @@ hbs.registerPartials(partialsPath)
 //set up static directory to serve
 app.use(express.static(publicDirectory))
 //set up ip request
-app.use(requestIp.mw())
+// app.use(requestIp.mw())
  
-app.use(function(req, res) {
-    ip = req.clientIp;
-    res.end(ip);
-});
+// app.use(function(req, res) {
+//     ip = req.clientIp;
+//     res.end(ip);
+// });
 
 app.get('', (req, res)=>{
     res.render('index', {
@@ -42,9 +42,10 @@ app.get('', (req, res)=>{
 
 app.get('/location', (req, res)=>{
 
+    const clientIp = requestIp.getClientIp(req)
     
     var apiCall = unirest("GET",
-    "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/" + ip
+    "https://ip-geolocation-ipwhois-io.p.rapidapi.com/json/" + clientIp
   );
   apiCall.headers({
     "x-rapidapi-host": "ip-geolocation-ipwhois-io.p.rapidapi.com",
