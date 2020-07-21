@@ -25,13 +25,6 @@ hbs.registerPartials(partialsPath)
 
 //set up static directory to serve
 app.use(express.static(publicDirectory))
-//set up ip request
-// app.use(requestIp.mw())
- 
-// app.use(function(req, res) {
-//     ip = req.clientIp;
-//     res.end(ip);
-// });
 
 app.get('', (req, res)=>{
     res.render('index', {

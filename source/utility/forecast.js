@@ -4,7 +4,6 @@ const forecast = (lattitude, longitude, callBack)=>{
 
     request({url, json: true}, (error, {body})=>{
 
-       
 
         if(error){
             callBack('Unable to connect to location services!', undefined)
