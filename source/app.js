@@ -4,7 +4,6 @@ const express = require('express')
 const hbs = require('hbs')
 const unirest = require('unirest')
 const requestIp = require('request-ip')
-let ip;
 //customized js
 const geocode = require('./utility/geocode.js')
 const forecast = require('./utility/forecast')
